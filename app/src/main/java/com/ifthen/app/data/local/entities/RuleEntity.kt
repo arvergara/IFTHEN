@@ -17,6 +17,7 @@ data class RuleEntity(
     val category: Category,
     val triggerType: TriggerType,
     val triggerConfigJson: String,  // JSON serialized TriggerConfig
+    val ifCondition: String,        // "SI son las 7:35 y es dia de semana"
     val action: String,
     val durationMinutes: Int,
     val priority: Priority,
@@ -33,6 +34,7 @@ fun RuleEntity.toDomain(triggerConfig: TriggerConfig): Rule = Rule(
     category = category,
     triggerType = triggerType,
     triggerConfig = triggerConfig,
+    ifCondition = ifCondition,
     action = action,
     durationMinutes = durationMinutes,
     priority = priority,
@@ -49,6 +51,7 @@ fun Rule.toEntity(triggerConfigJson: String): RuleEntity = RuleEntity(
     category = category,
     triggerType = triggerType,
     triggerConfigJson = triggerConfigJson,
+    ifCondition = ifCondition,
     action = action,
     durationMinutes = durationMinutes,
     priority = priority,

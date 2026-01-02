@@ -14,7 +14,7 @@ object DefaultRules {
         // === 1. MENTE - Meditacion (7:35) ===
         Rule(
             id = "rule_mente_meditacion",
-            name = "Meditacion manana",
+            name = "Meditar",
             category = Category.MENTE,
             triggerType = TriggerType.TIME,
             triggerConfig = TriggerConfig.TimeTrigger(
@@ -22,6 +22,7 @@ object DefaultRules {
                 minute = 35,
                 daysOfWeek = listOf(1, 2, 3, 4, 5)
             ),
+            ifCondition = "SI son las 7:35 y es dia de semana",
             action = "7 minutos de silencio/meditacion con cronometro",
             durationMinutes = 7,
             priority = Priority.ALTA,
@@ -33,7 +34,7 @@ object DefaultRules {
         // === 2. CUERPO - Ejercicio (7:45) ===
         Rule(
             id = "rule_cuerpo_ejercicio",
-            name = "Ejercicio manana",
+            name = "Ejercitar",
             category = Category.CUERPO,
             triggerType = TriggerType.CALENDAR,
             triggerConfig = TriggerConfig.CalendarTrigger(
@@ -41,6 +42,7 @@ object DefaultRules {
                 requiresFreeUntil = "08:15",
                 daysOfWeek = listOf(2, 3, 4, 5) // M-X-J-V
             ),
+            ifCondition = "SI son las 7:45 y tengo libre hasta las 8:15",
             action = "30 min de movimiento (caminar, bici o fuerza)",
             durationMinutes = 30,
             priority = Priority.ALTA,
@@ -52,7 +54,7 @@ object DefaultRules {
         // === 3. TRABAJO - Prioridades (8:30) ===
         Rule(
             id = "rule_trabajo_prioridades",
-            name = "Revisar prioridades",
+            name = "Priorizar",
             category = Category.TRABAJO,
             triggerType = TriggerType.TIME,
             triggerConfig = TriggerConfig.TimeTrigger(
@@ -60,7 +62,8 @@ object DefaultRules {
                 minute = 30,
                 daysOfWeek = listOf(1, 2, 3, 4, 5, 6, 7)
             ),
-            action = "Cuales son las 3 prioridades del dia? Que DEBE hacerse hoy?",
+            ifCondition = "SI son las 8:30 y empiezo el dia",
+            action = "Definir las 3 prioridades: Que DEBE hacerse hoy?",
             durationMinutes = 15,
             priority = Priority.ALTA,
             minimumAction = "Identificar 1 tarea critica",
@@ -79,7 +82,8 @@ object DefaultRules {
                 minute = 0,
                 daysOfWeek = listOf(1, 2, 3, 4, 5, 6, 7)
             ),
-            action = "No tomaste alcohol hoy? Max 3 copas/semana, max 2/dia.",
+            ifCondition = "SI son las 20:00 y aun no he bebido",
+            action = "Confirmar 0 copas hoy. Max 3/semana, max 2/dia.",
             durationMinutes = 1,
             priority = Priority.ALTA,
             minimumAction = null,
@@ -98,6 +102,7 @@ object DefaultRules {
                 minute = 0,
                 daysOfWeek = listOf(1, 2, 3, 4, 5, 6, 7)
             ),
+            ifCondition = "SI son las 19:00 y tengo energia",
             action = "30 min Sprint IA: leer, probar, reflexionar",
             durationMinutes = 30,
             priority = Priority.MEDIA,
@@ -117,7 +122,8 @@ object DefaultRules {
                 minute = 30,
                 daysOfWeek = listOf(1, 2, 3, 4, 5, 6, 7)
             ),
-            action = "Telefono fuera del espacio comun hasta que los ninos se acuesten",
+            ifCondition = "SI son las 19:30 y los ninos estan en casa",
+            action = "Telefono fuera del espacio comun hasta que se acuesten",
             durationMinutes = 120,
             priority = Priority.ALTA,
             minimumAction = null,
@@ -136,7 +142,8 @@ object DefaultRules {
                 minute = 30,
                 daysOfWeek = listOf(1, 2, 3, 4, 5, 6, 7)
             ),
-            action = "10 min de caminata o conversa de calidad con tu senora o hijos",
+            ifCondition = "SI son las 19:30 y estoy con la familia",
+            action = "10 min de caminata o conversa de calidad",
             durationMinutes = 10,
             priority = Priority.ALTA,
             minimumAction = null,
@@ -147,7 +154,7 @@ object DefaultRules {
         // === 8. CUERPO - Fasting (20:30) ===
         Rule(
             id = "rule_cuerpo_fasting",
-            name = "Fasting hasta 11am",
+            name = "Fasting 11am",
             category = Category.CUERPO,
             triggerType = TriggerType.TIME,
             triggerConfig = TriggerConfig.TimeTrigger(
@@ -155,7 +162,8 @@ object DefaultRules {
                 minute = 30,
                 daysOfWeek = listOf(1, 2, 3, 4, 5, 6, 7)
             ),
-            action = "Comienza ayuno. Solo agua o te hasta manana 11:00 am",
+            ifCondition = "SI son las 20:30 y termine de comer",
+            action = "Comenzar ayuno. Solo agua/te hasta manana 11:00",
             durationMinutes = 5,
             priority = Priority.ALTA,
             minimumAction = null,
@@ -166,7 +174,7 @@ object DefaultRules {
         // === 9. TRABAJO - Revisar cumplimiento (21:00) ===
         Rule(
             id = "rule_trabajo_cumplimiento",
-            name = "Revisar cumplimiento",
+            name = "Rev. Prioridades",
             category = Category.TRABAJO,
             triggerType = TriggerType.TIME,
             triggerConfig = TriggerConfig.TimeTrigger(
@@ -174,7 +182,8 @@ object DefaultRules {
                 minute = 0,
                 daysOfWeek = listOf(1, 2, 3, 4, 5, 6, 7)
             ),
-            action = "Revisa las 3 prioridades del dia. Se cumplieron o delegaron?",
+            ifCondition = "SI son las 21:00 y defini prioridades hoy",
+            action = "Revisar: Se cumplieron o delegaron las 3 prioridades?",
             durationMinutes = 5,
             priority = Priority.ALTA,
             minimumAction = null,
@@ -193,7 +202,8 @@ object DefaultRules {
                 minute = 30,
                 daysOfWeek = listOf(1, 2, 3, 4, 5, 6, 7)
             ),
-            action = "10 min de estiramientos antes de relajarte",
+            ifCondition = "SI son las 21:30 y voy a relajarme",
+            action = "10 min de estiramientos",
             durationMinutes = 10,
             priority = Priority.MEDIA,
             minimumAction = "5 min estiramientos basicos",
@@ -201,7 +211,7 @@ object DefaultRules {
             applicableModes = listOf(ModeType.RUTINA, ModeType.NO_COLEGIO, ModeType.FERIADO)
         ),
 
-        // === 10. MENTE - Pantallas off (22:45) ===
+        // === 11. MENTE - Pantallas off (22:45) ===
         Rule(
             id = "rule_mente_pantallas_off",
             name = "Pantallas off",
@@ -212,7 +222,8 @@ object DefaultRules {
                 minute = 45,
                 daysOfWeek = listOf(7, 1, 2, 3, 4) // Dom-Jue
             ),
-            action = "Apagar pantallas. Hora de leer para dormir 23:30",
+            ifCondition = "SI son las 22:45 y manana hay que madrugar",
+            action = "Apagar pantallas. Leer hasta las 23:30",
             durationMinutes = 45,
             priority = Priority.ALTA,
             minimumAction = null,

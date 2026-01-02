@@ -34,8 +34,8 @@ class RuleNotificationBuilder @Inject constructor(
         }
 
         val categoryEmoji = rule.category.getEmoji()
-        val title = "$categoryEmoji ${rule.name}"
-        val text = "$action ($duration min)"
+        val title = "$categoryEmoji ${rule.ifCondition}"
+        val text = "→ $action ($duration min)"
 
         // Intent para abrir la app
         val contentIntent = PendingIntent.getActivity(

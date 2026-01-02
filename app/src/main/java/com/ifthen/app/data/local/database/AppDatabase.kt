@@ -19,7 +19,7 @@ import com.ifthen.app.data.local.entities.UserStateEntity
         DelegateEntity::class,
         DailyPriorityEntity::class
     ],
-    version = 4,
+    version = 5,
     exportSchema = false
 )
 @TypeConverters(Converters::class)

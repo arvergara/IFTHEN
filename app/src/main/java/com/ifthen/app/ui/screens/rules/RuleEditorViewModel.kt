@@ -24,6 +24,7 @@ data class RuleEditorUiState(
     val name: String = "",
     val category: Category = Category.CUERPO,
     val triggerType: TriggerType = TriggerType.TIME,
+    val ifCondition: String = "",
     val action: String = "",
     val durationMinutes: Int = 15,
     val priority: Priority = Priority.MEDIA,
@@ -67,6 +68,7 @@ class RuleEditorViewModel @Inject constructor(
                         name = rule.name,
                         category = rule.category,
                         triggerType = rule.triggerType,
+                        ifCondition = rule.ifCondition,
                         action = rule.action,
                         durationMinutes = rule.durationMinutes,
                         priority = rule.priority,
@@ -97,6 +99,10 @@ class RuleEditorViewModel @Inject constructor(
 
     fun updateTriggerType(triggerType: TriggerType) {
         _uiState.update { it.copy(triggerType = triggerType) }
+    }
+
+    fun updateIfCondition(ifCondition: String) {
+        _uiState.update { it.copy(ifCondition = ifCondition) }
     }
 
     fun updateAction(action: String) {
@@ -160,12 +166,18 @@ class RuleEditorViewModel @Inject constructor(
             val state = _uiState.value
             val triggerConfig = buildTriggerConfig(state)
 
+            // Generate ifCondition if not provided
+            val ifCondition = state.ifCondition.ifBlank {
+                generateDefaultIfCondition(state)
+            }
+
             val rule = Rule(
                 id = state.id,
                 name = state.name,
                 category = state.category,
                 triggerType = state.triggerType,
                 triggerConfig = triggerConfig,
+                ifCondition = ifCondition,
                 action = state.action,
                 durationMinutes = state.durationMinutes,
                 priority = state.priority,
@@ -177,6 +189,17 @@ class RuleEditorViewModel @Inject constructor(
 
             ruleRepository.insertRule(rule)
             _uiState.update { it.copy(isSaved = true) }
+        }
+    }
+
+    private fun generateDefaultIfCondition(state: RuleEditorUiState): String {
+        val time = String.format("%02d:%02d", state.hour, state.minute)
+        return when (state.triggerType) {
+            TriggerType.TIME -> "SI son las $time"
+            TriggerType.CALENDAR -> "SI son las $time y tengo tiempo libre"
+            TriggerType.EVENT -> "SI ocurre ${state.eventName}"
+            TriggerType.MANUAL -> "SI activo manualmente"
+            TriggerType.PATTERN -> "SI detecto el patron"
         }
     }
 
