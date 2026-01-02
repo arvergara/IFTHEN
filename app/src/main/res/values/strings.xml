@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IF-THEN</string>
+
+    <!-- Navigation -->
+    <string name="nav_today">Hoy</string>
+    <string name="nav_rules">Reglas</string>
+    <string name="nav_week">Semana</string>
+
+    <!-- States -->
+    <string name="state_normal">Normal</string>
+    <string name="state_dia_pesado">Día pesado</string>
+    <string name="state_cansado">Cansado</string>
+    <string name="state_acelerado">Acelerado</string>
+    <string name="state_irritado">Irritado</string>
+
+    <!-- Categories -->
+    <string name="category_familia">Familia</string>
+    <string name="category_cuerpo">Cuerpo</string>
+    <string name="category_mente">Mente</string>
+    <string name="category_aprendizaje">Aprendizaje</string>
+
+    <!-- Actions -->
+    <string name="action_done">Hecho</string>
+    <string name="action_skip">Saltar</string>
+    <string name="action_minimum">Mínimo</string>
+
+    <!-- Skip Reasons -->
+    <string name="skip_reunion_temprano">Reunión temprano</string>
+    <string name="skip_dia_pesado">Día pesado</string>
+    <string name="skip_ya_lo_hice">Ya lo hice</string>
+    <string name="skip_otro">Otro</string>
+
+    <!-- Notifications -->
+    <string name="notification_channel_rules">Reglas IF-THEN</string>
+    <string name="notification_channel_description">Notificaciones de reglas activas</string>
+
+    <!-- Week Screen -->
+    <string name="week_title">Esta semana</string>
+    <string name="completion_label">Cumplimiento</string>
+
+    <!-- Rule Editor -->
+    <string name="new_rule">Nueva regla</string>
+    <string name="edit_rule">Editar regla</string>
+    <string name="rule_name">Nombre</string>
+    <string name="rule_action">Acción</string>
+    <string name="rule_duration">Duración (min)</string>
+    <string name="rule_minimum_action">Acción mínima (opcional)</string>
+    <string name="rule_minimum_duration">Duración mínima (min)</string>
+    <string name="save">Guardar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="delete">Eliminar</string>
+</resources>
